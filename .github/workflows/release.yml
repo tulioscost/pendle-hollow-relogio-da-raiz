@@ -1,0 +1,113 @@
+name: Build and Publish Foundry Module
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'module.json'
+      - 'scripts/**'
+      - 'styles/**'
+      - 'assets/**'
+      - '.github/workflows/release.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pendle-hollow-release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Read version
+        id: version
+        shell: bash
+        run: |
+          set -euo pipefail
+          VERSION="$(jq -r '.version' module.json)"
+          test -n "$VERSION"
+          test "$VERSION" != "null"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "tag=v$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Check existing release
+        id: existing
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.version.outputs.tag }}
+        shell: bash
+        run: |
+          if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Build Foundry package
+        if: steps.existing.outputs.exists != 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf dist
+          mkdir -p dist/module
+
+          cp -R scripts styles assets dist/module/
+          cp module.json README.md CHANGELOG.md dist/module/
+
+          # Force stable latest URLs into the release manifest.
+          jq \
+            --arg manifest "https://github.com/${GITHUB_REPOSITORY}/releases/latest/download/module.json" \
+            --arg download "https://github.com/${GITHUB_REPOSITORY}/releases/latest/download/pendle-hollow-final-clock.zip" \
+            --arg url "https://github.com/${GITHUB_REPOSITORY}" \
+            '.manifest=$manifest | .download=$download | .url=$url' \
+            dist/module/module.json > dist/module/module.tmp.json
+          mv dist/module/module.tmp.json dist/module/module.json
+          cp dist/module/module.json dist/module.json
+
+          cd dist/module
+          zip -r ../pendle-hollow-final-clock.zip .
+          cd ../..
+
+          # Validate Foundry package layout: module.json must be at ZIP root.
+          unzip -Z1 dist/pendle-hollow-final-clock.zip | grep -qx 'module.json'
+          jq -e '.id == "pendle-hollow-final-clock"' dist/module.json >/dev/null
+
+      - name: Publish release
+        if: steps.existing.outputs.exists != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.version.outputs.tag }}
+          VERSION: ${{ steps.version.outputs.version }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh release create "$TAG" \
+            dist/pendle-hollow-final-clock.zip \
+            dist/module.json \
+            --repo "$GITHUB_REPOSITORY" \
+            --target "$GITHUB_SHA" \
+            --title "Pendle Hollow — Relógio da Raiz v${VERSION}" \
+            --generate-notes \
+            --latest
+
+      - name: Summary
+        shell: bash
+        run: |
+          {
+            echo "## Pendle Hollow — Relógio da Raiz"
+            echo
+            echo "Versão: v${{ steps.version.outputs.version }}"
+            echo
+            echo "Manifesto de instalação:"
+            echo '```text'
+            echo "https://github.com/${GITHUB_REPOSITORY}/releases/latest/download/module.json"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
