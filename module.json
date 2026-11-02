@@ -3,7 +3,7 @@
   "type": "module",
   "title": "Pendle Hollow — Relógio da Raiz",
   "description": "Relógio/calendário diegético para a sessão final de Pendle Hollow. Exibe dia da semana, dia da estadia e horário para todos os jogadores; somente o GM pode alterar o estado. Aparência de madeira velha, galhos, ossos e sujeira.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "authors": [
     {
       "name": "tulioscost",
@@ -23,6 +23,6 @@
   "socket": true,
   "url": "https://github.com/tulioscost/pendle-hollow-relogio-da-raiz",
   "manifest": "https://github.com/tulioscost/pendle-hollow-relogio-da-raiz/releases/latest/download/module.json",
-  "download": "https://github.com/tulioscost/pendle-hollow-relogio-da-raiz/releases/download/v1.0.0/pendle-hollow-final-clock.zip",
+  "download": "https://github.com/tulioscost/pendle-hollow-relogio-da-raiz/releases/latest/download/pendle-hollow-final-clock.zip",
   "media": []
 }
