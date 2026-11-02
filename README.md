@@ -69,3 +69,20 @@ O workflow `.github/workflows/release.yml` executa em todo push para `main` e l�
 Não é necessário criar a tag manualmente.
 
 > Se o GitHub bloquear a publicação, confira em **Settings → Actions → General → Workflow permissions** se o `GITHUB_TOKEN` possui permissão **Read and write permissions**.
+
+
+## HUD / Estante Antiga
+
+A partir da versão **1.1.0**, o módulo também aplica um tema visual de cenário ao Foundry: a HUD lateral e os controles recebem acabamento de **madeira envelhecida**, com sensação de **estante antiga**, e as **mensagens de rolagem no chat** passam a lembrar **páginas de livros antigos**.
+
+
+## Livro, fichário e chat
+
+Na versão **1.1.1**, os Journals são apresentados com acabamento de **livro antigo aberto**. Os diretórios principais da sidebar assumem aparência de **tomos e fichário antigo**, preservando nomes, ícones e usabilidade do Foundry.
+
+O chat usa as categorias nativas do Foundry VTT v14 para diferenciar visualmente:
+- **fala em personagem (IC)** — página de romance;
+- **emote** — anotação manuscrita;
+- **fora de personagem (OOC)** — ficha pautada;
+- **rolagens** — página arrancada / registro ritual;
+- **mensagens genéricas** — pergaminho neutro.

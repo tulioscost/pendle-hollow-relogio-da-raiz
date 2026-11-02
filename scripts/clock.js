@@ -38,6 +38,7 @@ Hooks.once("init", () => {
 });
 
 Hooks.once("ready", async () => {
+  document.body?.classList.add("ph-root-theme");
   currentState = parseStoredState(game.settings.get(MODULE_ID, "clockStateJson"));
   injectClock();
   renderState(currentState);

@@ -1,0 +1,616 @@
+body.ph-root-theme {
+  --phs-wood-dark: #24170f;
+  --phs-wood-mid: #4a2d1a;
+  --phs-wood-light: #70482a;
+  --phs-brass: #b08b52;
+  --phs-brass-dim: #7f6339;
+  --phs-paper: #d9c8a2;
+  --phs-paper-light: #eadcc0;
+  --phs-ink: #352417;
+  --phs-shadow: rgba(0, 0, 0, 0.58);
+}
+
+body.ph-root-theme #ui-left,
+body.ph-root-theme #ui-middle,
+body.ph-root-theme #ui-right,
+body.ph-root-theme #ui-bottom {
+  text-shadow: 0 1px 1px rgba(0,0,0,.65);
+}
+
+/* Sidebar / estante */
+body.ph-root-theme #sidebar {
+  position: relative;
+  border: 2px solid #130c07;
+  border-radius: 14px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 16% 12%, rgba(255,255,255,.05) 0 1px, transparent 2px),
+    radial-gradient(circle at 78% 70%, rgba(0,0,0,.16) 0 2px, transparent 3px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.03) 0 1px, transparent 1px 22px),
+    linear-gradient(90deg, #2a180d 0%, #5a351d 12%, #3b2414 30%, #6c4528 48%, #3e2717 72%, #24150d 100%);
+  box-shadow:
+    inset 0 0 0 4px rgba(111,72,40,.35),
+    inset 0 0 26px rgba(0,0,0,.55),
+    0 10px 26px rgba(0,0,0,.48);
+}
+
+body.ph-root-theme #sidebar::before {
+  content: "";
+  position: absolute;
+  inset: 48px 6px 6px 6px;
+  pointer-events: none;
+  opacity: .38;
+  background:
+    repeating-linear-gradient(to bottom,
+      transparent 0 82px,
+      rgba(16,10,7,.95) 82px 88px,
+      rgba(119,84,49,.65) 88px 92px,
+      transparent 92px 164px);
+  mix-blend-mode: multiply;
+}
+
+body.ph-root-theme #sidebar-tabs {
+  position: relative;
+  z-index: 2;
+  gap: 4px;
+  padding: 8px 6px 7px;
+  border-bottom: 2px solid rgba(20,12,8,.9);
+  background: linear-gradient(180deg, rgba(24,15,10,.94), rgba(68,40,21,.92));
+  box-shadow: inset 0 -1px 0 rgba(190,150,90,.24), 0 3px 8px rgba(0,0,0,.35);
+}
+
+body.ph-root-theme #sidebar-tabs > .item {
+  border: 1px solid rgba(14,10,8,.95);
+  border-radius: 8px 8px 0 0;
+  background: linear-gradient(180deg, #7a5938, #4f311c 55%, #321d10);
+  color: #ead6ae;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.08), inset 0 -2px 0 rgba(0,0,0,.35);
+}
+
+body.ph-root-theme #sidebar-tabs > .item.active {
+  color: #fff1ca;
+  background: linear-gradient(180deg, #947149, #6b4528 55%, #45291a);
+  box-shadow: inset 0 0 0 1px rgba(204,162,95,.45), 0 0 10px rgba(0,0,0,.25);
+}
+
+body.ph-root-theme #sidebar-content,
+body.ph-root-theme .sidebar-tab {
+  position: relative;
+  z-index: 2;
+  color: #eddcb6;
+}
+
+body.ph-root-theme .sidebar-tab .directory-list .directory-item,
+body.ph-root-theme .sidebar-tab .directory-list .folder,
+body.ph-root-theme .sidebar-tab .directory-list .scene,
+body.ph-root-theme .sidebar-tab .directory-list .journal-entry,
+body.ph-root-theme .sidebar-tab .directory-list .actor,
+body.ph-root-theme .sidebar-tab .directory-list .item {
+  border: 1px solid rgba(32,20,11,.72);
+  border-radius: 8px;
+  margin: 4px 6px;
+  padding: 4px 6px;
+  background: linear-gradient(180deg, rgba(92,60,35,.48), rgba(33,20,12,.52));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.04), 0 1px 4px rgba(0,0,0,.22);
+}
+
+body.ph-root-theme .sidebar-tab input[type="text"],
+body.ph-root-theme .sidebar-tab input[type="search"],
+body.ph-root-theme .sidebar-tab select,
+body.ph-root-theme .sidebar-tab button,
+body.ph-root-theme #players,
+body.ph-root-theme #navigation,
+body.ph-root-theme #hotbar {
+  border-color: rgba(23,14,8,.95);
+}
+
+/* Scene controls / HUD */
+body.ph-root-theme #controls {
+  border: 2px solid #140d08;
+  border-radius: 14px;
+  padding: 8px 6px;
+  background:
+    repeating-linear-gradient(180deg, rgba(255,255,255,.02) 0 1px, transparent 1px 20px),
+    linear-gradient(180deg, #2c190d 0%, #5d371d 28%, #3b2416 58%, #22140c 100%);
+  box-shadow: inset 0 0 0 4px rgba(105,71,39,.3), inset 0 0 18px rgba(0,0,0,.5), 0 10px 18px rgba(0,0,0,.38);
+}
+
+body.ph-root-theme #controls ol.control-tools,
+body.ph-root-theme #controls ol.control-icons,
+body.ph-root-theme #controls .control-tools,
+body.ph-root-theme #controls .control-icons {
+  gap: 6px;
+}
+
+body.ph-root-theme #controls .scene-control,
+body.ph-root-theme #controls .control-tool,
+body.ph-root-theme #controls li.scene-control,
+body.ph-root-theme #controls li.control-tool {
+  border: 1px solid #1c120b;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #7d5f3f, #53331d 58%, #2e1b10);
+  color: #f1ddb5;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.08), inset 0 -2px 0 rgba(0,0,0,.28), 0 2px 5px rgba(0,0,0,.28);
+}
+
+body.ph-root-theme #controls .scene-control.active,
+body.ph-root-theme #controls .control-tool.active,
+body.ph-root-theme #controls li.scene-control.active,
+body.ph-root-theme #controls li.control-tool.active,
+body.ph-root-theme #controls .scene-control:hover,
+body.ph-root-theme #controls .control-tool:hover {
+  background: linear-gradient(180deg, #9a774c, #6c4427 58%, #442718);
+  color: #fff4d1;
+  box-shadow: inset 0 0 0 1px rgba(205,168,105,.42), 0 0 10px rgba(0,0,0,.3);
+}
+
+body.ph-root-theme #navigation,
+body.ph-root-theme #players,
+body.ph-root-theme #hotbar {
+  border: 2px solid #140d08;
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(48,29,16,.95), rgba(89,55,30,.9));
+  box-shadow: inset 0 0 0 3px rgba(105,71,39,.28), inset 0 0 14px rgba(0,0,0,.46), 0 7px 18px rgba(0,0,0,.34);
+}
+
+body.ph-root-theme #navigation #scene-list .scene,
+body.ph-root-theme #players .player,
+body.ph-root-theme #hotbar .macro {
+  border-color: rgba(24,15,9,.92);
+  background: linear-gradient(180deg, rgba(118,88,54,.55), rgba(53,32,19,.55));
+}
+
+/* Chat parchment / pages */
+body.ph-root-theme #chat-log .message,
+body.ph-root-theme #chat-log .chat-message,
+body.ph-root-theme .chat-popout .message,
+body.ph-root-theme .chat-popout .chat-message {
+  position: relative;
+  margin: 8px 6px 10px;
+  padding: 10px 12px 12px;
+  border: 1px solid #5b4329;
+  border-radius: 6px;
+  color: var(--phs-ink);
+  background:
+    radial-gradient(circle at 18% 14%, rgba(255,255,255,.18) 0 1px, transparent 2px),
+    radial-gradient(circle at 76% 80%, rgba(111,76,44,.12) 0 2px, transparent 3px),
+    linear-gradient(180deg, rgba(78,56,33,.09), rgba(78,56,33,0) 34%),
+    linear-gradient(180deg, var(--phs-paper-light), var(--phs-paper) 58%, #cbb78f 100%);
+  box-shadow: inset 0 0 24px rgba(93,64,36,.1), 0 2px 6px rgba(0,0,0,.18);
+  font-family: Georgia, "Palatino Linotype", serif;
+  text-shadow: none;
+}
+
+body.ph-root-theme #chat-log .message::before,
+body.ph-root-theme #chat-log .chat-message::before,
+body.ph-root-theme .chat-popout .message::before,
+body.ph-root-theme .chat-popout .chat-message::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .38;
+  mix-blend-mode: multiply;
+  background:
+    linear-gradient(transparent 0 92%, rgba(78,56,33,.06) 92% 100%),
+    radial-gradient(ellipse at 10% 10%, rgba(120,84,52,.15) 0 16%, transparent 32%),
+    radial-gradient(ellipse at 90% 84%, rgba(120,84,52,.12) 0 12%, transparent 24%);
+}
+
+body.ph-root-theme #chat-log .message.whisper,
+body.ph-root-theme #chat-log .chat-message.whisper {
+  background: linear-gradient(180deg, #dfd4c0, #cfc1a6 58%, #bca88b 100%);
+}
+
+body.ph-root-theme #chat-log .message.blind,
+body.ph-root-theme #chat-log .chat-message.blind {
+  background: linear-gradient(180deg, #d9d0c3, #bfb1a0 58%, #a8937c 100%);
+}
+
+body.ph-root-theme #chat-log .message-header,
+body.ph-root-theme .chat-message .message-header {
+  border-bottom: 1px solid rgba(91,67,41,.35);
+  margin-bottom: 6px;
+  padding-bottom: 5px;
+  color: #553721;
+  font-family: "Palatino Linotype", Georgia, serif;
+}
+
+body.ph-root-theme #chat-log .message-sender,
+body.ph-root-theme .chat-message .message-sender {
+  color: #412917;
+  font-weight: 700;
+  letter-spacing: .2px;
+}
+
+body.ph-root-theme .chat-message .flavor-text {
+  color: #64452b;
+  font-style: italic;
+}
+
+body.ph-root-theme .chat-message .dice-roll {
+  margin-top: 6px;
+  padding: 8px 9px;
+  border: 1px solid rgba(88,60,32,.45);
+  border-radius: 5px;
+  background: linear-gradient(180deg, rgba(255,255,255,.22), rgba(116,82,47,.05));
+  box-shadow: inset 0 0 10px rgba(123,90,56,.08);
+}
+
+body.ph-root-theme .chat-message .dice-formula,
+body.ph-root-theme .chat-message .dice-total,
+body.ph-root-theme .chat-message .dice-tooltip {
+  border-color: rgba(80,56,35,.42);
+  color: #341f12;
+  background: rgba(248,240,220,.68);
+}
+
+body.ph-root-theme .chat-message .dice-formula {
+  font-family: "Courier New", monospace;
+  letter-spacing: .4px;
+}
+
+body.ph-root-theme .chat-message .dice-total {
+  font-family: Georgia, "Palatino Linotype", serif;
+  font-size: 24px;
+  font-weight: 700;
+  box-shadow: inset 0 0 0 1px rgba(110,81,49,.18);
+}
+
+body.ph-root-theme .chat-message .dice-tooltip .part-header,
+body.ph-root-theme .chat-message .dice-tooltip .part-total {
+  color: #4a2d1a;
+}
+
+body.ph-root-theme .chat-message .dice-tooltip .dice-rolls .roll {
+  border-color: rgba(85,59,33,.36);
+  background: rgba(255,250,239,.66);
+  color: #2c1a10;
+}
+
+body.ph-root-theme .chat-message em,
+body.ph-root-theme .chat-message strong {
+  color: #432919;
+}
+
+body.ph-root-theme #chat-controls,
+body.ph-root-theme #chat-form textarea,
+body.ph-root-theme .chat-control-icon {
+  color: #ead7b0;
+}
+
+body.ph-root-theme #chat-form textarea,
+body.ph-root-theme #chat-message {
+  border: 1px solid #2a1a11;
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgba(57,34,20,.95), rgba(31,19,12,.95));
+  color: #f1dfba;
+  box-shadow: inset 0 0 10px rgba(0,0,0,.45);
+}
+
+body.ph-root-theme .window-app .window-header,
+body.ph-root-theme .application .window-header {
+  background: linear-gradient(180deg, #5a361f, #2e1b10);
+  color: #ecd9b4;
+  border-bottom: 1px solid #1f130c;
+}
+
+
+/* =========================================================
+   v1.1.1 — Diretórios como tomos / fichário antigo
+   ========================================================= */
+body.ph-root-theme #actors .directory-item.document,
+body.ph-root-theme #scenes .directory-item.document,
+body.ph-root-theme #journal .directory-item.document,
+body.ph-root-theme #items .directory-item.document,
+body.ph-root-theme #tables .directory-item.document,
+body.ph-root-theme #compendium .directory-item.document,
+body.ph-root-theme .sidebar-tab[data-tab="actors"] .directory-item.document,
+body.ph-root-theme .sidebar-tab[data-tab="scenes"] .directory-item.document,
+body.ph-root-theme .sidebar-tab[data-tab="journal"] .directory-item.document,
+body.ph-root-theme .sidebar-tab[data-tab="items"] .directory-item.document,
+body.ph-root-theme .sidebar-tab[data-tab="tables"] .directory-item.document,
+body.ph-root-theme .sidebar-tab[data-tab="compendium"] .directory-item.document {
+  position: relative;
+  min-height: 34px;
+  margin: 4px 7px;
+  padding: 5px 8px 5px 15px;
+  border: 1px solid #1c110a;
+  border-left: 8px solid #6f492b;
+  border-radius: 3px 8px 8px 3px;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,.05), transparent 18%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.018) 0 1px, transparent 1px 5px),
+    linear-gradient(180deg, #69452a, #3c2516 62%, #2a180f);
+  box-shadow:
+    inset 2px 0 0 rgba(224,184,119,.18),
+    inset 0 1px 0 rgba(255,255,255,.05),
+    1px 3px 5px rgba(0,0,0,.28);
+  transform-origin: left center;
+  transition: transform .12s ease, filter .12s ease, box-shadow .12s ease;
+}
+
+body.ph-root-theme #actors .directory-item.document:hover,
+body.ph-root-theme #scenes .directory-item.document:hover,
+body.ph-root-theme #journal .directory-item.document:hover,
+body.ph-root-theme #items .directory-item.document:hover,
+body.ph-root-theme #tables .directory-item.document:hover,
+body.ph-root-theme #compendium .directory-item.document:hover {
+  transform: translateX(-3px);
+  filter: brightness(1.1);
+  box-shadow: inset 2px 0 0 rgba(224,184,119,.22), 4px 4px 8px rgba(0,0,0,.34);
+}
+
+/* cores dos “lombos” */
+body.ph-root-theme #actors .directory-item.document,
+body.ph-root-theme .sidebar-tab[data-tab="actors"] .directory-item.document { border-left-color: #5e5532; }
+body.ph-root-theme #scenes .directory-item.document,
+body.ph-root-theme .sidebar-tab[data-tab="scenes"] .directory-item.document { border-left-color: #6b3429; }
+body.ph-root-theme #journal .directory-item.document,
+body.ph-root-theme .sidebar-tab[data-tab="journal"] .directory-item.document { border-left-color: #8a6a3f; }
+body.ph-root-theme #items .directory-item.document,
+body.ph-root-theme .sidebar-tab[data-tab="items"] .directory-item.document { border-left-color: #4d4136; }
+body.ph-root-theme #tables .directory-item.document,
+body.ph-root-theme .sidebar-tab[data-tab="tables"] .directory-item.document { border-left-color: #82602d; }
+body.ph-root-theme #compendium .directory-item.document,
+body.ph-root-theme .sidebar-tab[data-tab="compendium"] .directory-item.document { border-left-color: #573025; }
+
+body.ph-root-theme .sidebar-tab .directory-item.folder,
+body.ph-root-theme .sidebar-tab .folder {
+  margin: 6px 5px;
+  border: 1px solid #24160d;
+  border-radius: 4px;
+  background:
+    linear-gradient(180deg, rgba(161,119,69,.72), rgba(88,55,30,.82)),
+    repeating-linear-gradient(90deg, transparent 0 30px, rgba(0,0,0,.08) 30px 31px);
+  box-shadow: inset 0 0 0 2px rgba(37,22,12,.18), 0 2px 5px rgba(0,0,0,.28);
+}
+
+body.ph-root-theme .sidebar-tab .directory-item.folder > .folder-header,
+body.ph-root-theme .sidebar-tab .folder > .folder-header {
+  min-height: 34px;
+  padding: 5px 8px;
+  color: #f0d9ac;
+  letter-spacing: .5px;
+  font-family: Georgia, "Palatino Linotype", serif;
+  text-transform: uppercase;
+}
+
+body.ph-root-theme .sidebar-tab .directory-item.folder > .folder-header::after,
+body.ph-root-theme .sidebar-tab .folder > .folder-header::after {
+  content: "";
+  display: inline-block;
+  width: 42px;
+  height: 12px;
+  margin-left: 8px;
+  vertical-align: middle;
+  border: 1px solid rgba(232,201,143,.35);
+  border-radius: 2px;
+  background: rgba(36,22,13,.22);
+}
+
+/* =========================================================
+   v1.1.1 — Journal como livro antigo aberto
+   ========================================================= */
+body.ph-root-theme .ph-book-window {
+  --ph-book-cover: #2d1b10;
+  --ph-book-leather: #4a2c19;
+  --ph-book-page: #dccaa4;
+  --ph-book-page-light: #eee2c8;
+  --ph-book-ink: #352417;
+  border: 5px solid #1a100a !important;
+  border-radius: 12px !important;
+  overflow: hidden;
+  background: var(--ph-book-cover) !important;
+  box-shadow:
+    inset 0 0 0 2px #765035,
+    inset 0 0 24px rgba(0,0,0,.55),
+    0 18px 34px rgba(0,0,0,.55) !important;
+}
+
+body.ph-root-theme .ph-book-window .window-header {
+  min-height: 38px;
+  border-bottom: 1px solid #1a100a !important;
+  color: #ead7af !important;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,.04) 0 1px, transparent 2px),
+    linear-gradient(180deg, #624029, #3f2618 58%, #2c190f) !important;
+  box-shadow: inset 0 -2px 0 rgba(0,0,0,.24);
+}
+
+body.ph-root-theme .ph-book-content,
+body.ph-root-theme .ph-book-window .window-content {
+  position: relative;
+  color: var(--ph-book-ink) !important;
+  background:
+    linear-gradient(90deg,
+      #c8b187 0%,
+      var(--ph-book-page-light) 5%,
+      #e7d8b8 47%,
+      #a99370 49.2%,
+      #6f583e 50%,
+      #a99370 50.8%,
+      #e7d8b8 53%,
+      var(--ph-book-page-light) 95%,
+      #c8b187 100%) !important;
+  box-shadow: inset 0 0 24px rgba(87,59,32,.2);
+}
+
+body.ph-root-theme .ph-book-window .journal-entry,
+body.ph-root-theme .ph-book-window .journal-entry-page,
+body.ph-root-theme .ph-book-window .journal-entry-pages,
+body.ph-root-theme .ph-book-window .journal-page-content,
+body.ph-root-theme .ph-book-window .editor-content,
+body.ph-root-theme .ph-book-window .prosemirror,
+body.ph-root-theme .ph-book-window article,
+body.ph-root-theme .ph-book-window section {
+  color: #352417;
+}
+
+body.ph-root-theme .ph-book-window .journal-entry-content,
+body.ph-root-theme .ph-book-window .journal-entry-pages,
+body.ph-root-theme .ph-book-window .journal-page-content {
+  padding: 16px 24px;
+  background: rgba(242,231,205,.30);
+}
+
+body.ph-root-theme .ph-book-window .journal-sidebar,
+body.ph-root-theme .ph-book-window .toc,
+body.ph-root-theme .ph-book-window nav.pages-list,
+body.ph-root-theme .ph-book-window aside {
+  color: #ead9b6;
+  background:
+    repeating-linear-gradient(0deg, rgba(255,255,255,.018) 0 1px, transparent 1px 10px),
+    linear-gradient(90deg, #2b190f, #4d2d1a 55%, #311b10);
+  border-right: 2px solid #1b1009;
+  box-shadow: inset -8px 0 16px rgba(0,0,0,.22);
+}
+
+body.ph-root-theme .ph-book-window h1,
+body.ph-root-theme .ph-book-window h2,
+body.ph-root-theme .ph-book-window h3 {
+  color: #4b2e1b;
+  font-family: Georgia, "Palatino Linotype", serif;
+  text-shadow: 0 1px rgba(255,255,255,.24);
+}
+
+body.ph-root-theme .ph-book-window h1 {
+  border-bottom: 2px solid rgba(83,55,30,.45);
+  padding-bottom: 6px;
+}
+
+body.ph-root-theme .ph-book-window blockquote {
+  border-left: 4px double #79583a;
+  margin-left: 8px;
+  padding: 8px 14px;
+  color: #5a4028;
+  background: rgba(139,100,60,.08);
+  font-style: italic;
+}
+
+body.ph-root-theme .ph-book-window a.content-link,
+body.ph-root-theme .ph-book-window a.inline-roll {
+  color: #6b2d1d;
+  background: rgba(255,247,227,.34);
+  border-color: rgba(94,58,31,.35);
+}
+
+/* =========================================================
+   v1.1.1 — Tipos de mensagem no chat
+   ========================================================= */
+body.ph-root-theme #chat-log .ph-chat-card {
+  overflow: hidden;
+}
+
+/* Fala em personagem: página de romance com marcador */
+body.ph-root-theme #chat-log .ph-chat-card.ph-chat-ic {
+  border-left: 5px solid #784436;
+  background:
+    linear-gradient(90deg, rgba(118,68,54,.10), transparent 13%),
+    linear-gradient(180deg, #eee0bd, #d8c49a 64%, #c7b085) !important;
+}
+body.ph-root-theme #chat-log .ph-chat-card.ph-chat-ic .message-sender::before {
+  content: "❧ ";
+  color: #7b4a34;
+}
+body.ph-root-theme #chat-log .ph-chat-card.ph-chat-ic .message-content {
+  font-size: 1.02em;
+  line-height: 1.45;
+}
+
+/* Emote: anotação manuscrita */
+body.ph-root-theme #chat-log .ph-chat-card.ph-chat-emote {
+  border-left: 5px solid #5e6347;
+  background:
+    linear-gradient(180deg, #e2dcc6, #ccc3a8 66%, #b8ad91) !important;
+}
+body.ph-root-theme #chat-log .ph-chat-card.ph-chat-emote .message-content {
+  color: #4c4739;
+  font-style: italic;
+}
+body.ph-root-theme #chat-log .ph-chat-card.ph-chat-emote .message-sender::before {
+  content: "✒ ";
+  color: #5e6347;
+}
+
+/* OOC: ficha/nota de arquivo com linhas */
+body.ph-root-theme #chat-log .ph-chat-card.ph-chat-ooc {
+  border-left: 5px solid #59646b;
+  background:
+    repeating-linear-gradient(180deg, transparent 0 23px, rgba(71,83,89,.10) 23px 24px),
+    linear-gradient(180deg, #e4decf, #d0c7b2) !important;
+}
+body.ph-root-theme #chat-log .ph-chat-card.ph-chat-ooc .message-sender::before {
+  content: "▣ ";
+  color: #58656c;
+}
+body.ph-root-theme #chat-log .ph-chat-card.ph-chat-ooc .message-content {
+  font-family: "Courier New", monospace;
+  font-size: .95em;
+}
+
+/* Rolagem: página arrancada / registro ritual */
+body.ph-root-theme #chat-log .ph-chat-card.ph-chat-roll {
+  border: 2px solid #4b2d1b;
+  border-left: 8px double #6f2f24;
+  border-radius: 3px 8px 8px 3px;
+  background:
+    radial-gradient(ellipse at 8% 12%, rgba(117,72,40,.18) 0 8%, transparent 26%),
+    linear-gradient(180deg, #e8d7b2, #cdb58a 70%, #baa077) !important;
+  box-shadow: inset 0 0 22px rgba(88,53,28,.18), 0 3px 7px rgba(0,0,0,.24);
+}
+body.ph-root-theme #chat-log .ph-chat-card.ph-chat-roll .message-header {
+  border-bottom: 1px double rgba(89,52,29,.46);
+}
+body.ph-root-theme #chat-log .ph-chat-card.ph-chat-roll .message-sender::before {
+  content: "✦ ";
+  color: #7d2f23;
+}
+body.ph-root-theme #chat-log .ph-chat-card.ph-chat-roll .dice-formula {
+  border: 0;
+  border-bottom: 1px solid rgba(94,59,35,.36);
+  border-radius: 0;
+  background: transparent;
+  color: #4a301e;
+}
+body.ph-root-theme #chat-log .ph-chat-card.ph-chat-roll .dice-total {
+  position: relative;
+  border: 2px solid #744135;
+  border-radius: 50%;
+  min-width: 54px;
+  width: max-content;
+  margin: 8px auto 2px;
+  padding: 6px 12px;
+  color: #71281f;
+  background: rgba(237,220,182,.62);
+  font-family: Georgia, serif;
+  font-size: 27px;
+  line-height: 1.15;
+  transform: rotate(-1deg);
+  box-shadow: inset 0 0 0 2px rgba(116,65,53,.12);
+}
+body.ph-root-theme #chat-log .ph-chat-card.ph-chat-roll .dice-total::after {
+  content: "ROLAGEM";
+  position: absolute;
+  left: 50%;
+  bottom: -15px;
+  transform: translateX(-50%) rotate(-2deg);
+  color: rgba(109,43,34,.72);
+  font-family: "Courier New", monospace;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+/* Mensagem genérica */
+body.ph-root-theme #chat-log .ph-chat-card.ph-chat-other {
+  border-left: 5px solid #86633a;
+}
+
+/* Privado/cego preserva leitura e acrescenta sinal visual */
+body.ph-root-theme #chat-log .ph-chat-card.ph-chat-whisper {
+  box-shadow: inset 0 0 0 2px rgba(74,55,93,.23), 0 2px 6px rgba(0,0,0,.18);
+}
+body.ph-root-theme #chat-log .ph-chat-card.ph-chat-blind {
+  filter: saturate(.72) brightness(.92);
+}
